@@ -16,6 +16,7 @@ namespace Calculator
         private bool _resultDisplayed = false;
         private bool _operationClicked = false;
         private bool _errorDisplayed = false;
+
         #endregion
         #region [Ctor]
         public MainWindow()
@@ -40,9 +41,13 @@ namespace Calculator
                 else
                 {
                     Display.Text += button.Content;
+                    
                 }
+
                 _resultDisplayed = false;
                 _operationClicked = false;
+         
+
             }
         }
         #endregion
@@ -94,6 +99,7 @@ namespace Calculator
                 _errorDisplayed = true;
                 return;
             }
+          
             _secondNumber = double.Parse(Display.Text);
             switch (_operation)
             {
@@ -133,7 +139,10 @@ namespace Calculator
         #region [OnClearClick(object sender, RoutedEventArgs e)]
         private void OnClearClick(object sender, RoutedEventArgs e)
         {
-            Display.Clear();
+            Display.Text = string.Empty;
+            _operation = string.Empty;
+            _firstNumber = 0.0;
+            _secondNumber = 0.0;
             _resultDisplayed = false;
             _operationClicked = false;
             _errorDisplayed = false;
